@@ -1,7 +1,7 @@
-const express = require('express');
-const router = express.Router();
-
+const router = require('../index');
 const Task = require('../models/todo');
+
+console.log(router)
 
 
 // Route để tạo công việc mới (Create)
@@ -18,6 +18,7 @@ router.post('/tasks', async (req, res) => {
 
 // Route để lấy danh sách công việc (Read all)
 router.get('/tasks', async (req, res) => {
+  console.log("abc")
   try {
     const tasks = await Task.findAll();
     res.json(tasks);
@@ -74,5 +75,3 @@ router.delete('/tasks/:id', async (req, res) => {
   }
 });
 
-
-module.exports = router;
