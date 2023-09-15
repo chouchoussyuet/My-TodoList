@@ -1,8 +1,12 @@
-const router = require('../index');
-const Task = require('../models/todo');
+const express = require('express');
+const router = express.Router();
+const { sequelize, DataTypes } = require('./../sequelize'); // Import cấu hình từ tệp sequelize.js
+const Task = require('../models/todo')(sequelize, DataTypes);
+const bodyParser = require('body-parser');
 
-console.log(router)
-
+// Sử dụng body-parser để xử lý dữ liệu từ yêu cầu POST trong tệp router.js
+router.use(bodyParser.json()); // Xử lý JSON
+router.use(bodyParser.urlencoded({ extended: true })); // Xử lý dữ liệu form-urlencoded
 
 // Route để tạo công việc mới (Create)
 router.post('/tasks', async (req, res) => {
@@ -18,7 +22,6 @@ router.post('/tasks', async (req, res) => {
 
 // Route để lấy danh sách công việc (Read all)
 router.get('/tasks', async (req, res) => {
-  console.log("abc")
   try {
     const tasks = await Task.findAll();
     res.json(tasks);
@@ -75,3 +78,4 @@ router.delete('/tasks/:id', async (req, res) => {
   }
 });
 
+module.exports = router;

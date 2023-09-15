@@ -1,4 +1,125 @@
+@font-face {
+  font-family: 'headline';
+  src: url('font/Pacifico/Pacifico-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'borel';
+  src: url('font/Borel/Borel-Regular.ttf');
+}
+
 body {
-    background-color: pink;
+    background-image: url('img/background.png') ;
     background-size: cover;
   }
+
+  #headline {
+    font-size : 70px;
+    font-weight : 500;
+    font-family : 'headline', sans-serif;
+    color : rgb(53, 51, 51);
+    text-align : center;
+    padding-top : 30px;
+    padding-bottom : 70px;
+  }
+
+  .input{
+    background-color : rgba(197, 194, 194, 0.712);
+    padding: 3px 3px 3px 3px;
+    border: none;
+    outline :none;
+    border-radius: 20px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    width: 255px; 
+    height: 35px;
+    margin-bottom : 20px;
+  }
+
+  #addButton {
+    background-color : rgba(254, 253, 255, 0.514);
+    color : rgb(105, 86, 86);
+    padding : 5px 10px;
+    cursor : pointer;
+    border-radius: 50px;
+    border: 1px solid grey;
+    height : 40px;
+  }
+  #addButton:hover{
+    background-color: #a19ea1;
+  }
+
+  #taskList {
+    box-sizing :border-box;
+    border : none;
+  }
+
+  .list{
+    display : flex;
+    background-color : rgba(228, 229, 235, 0.305);
+    margin : 3px 0 3px auto;
+    padding : auto;
+    border-radius : 20px;
+    position : relative;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  
+  .list:hover{
+    background-color: rgba(254, 254, 255, 0.653);
+    cursor : pointer;
+    position : relative;
+  }
+  
+  .list::-webkit-scrollbar {
+    height : 8px;
+    background-color:rgba(228, 229, 235, 0); /* Màu nền của thanh kéo */
+  }
+
+  /* trong thanh kéo */
+  .list::-webkit-scrollbar-thumb {
+    background-color: rgba(138, 136, 136, 0.712); /* Màu sắc của thanh kéo */
+    border-radius: 5px;
+  }
+
+  p{
+    font-family : 'headline', sans-serif;
+    color : rgba(53, 51, 51, 0.592);
+    font-style : italic;
+    margin-left : 12px;
+    margin-top : 6px;
+    padding-top : 3px;
+  }
+
+  strong{
+    font-family :'borel';
+    color : rgba(29, 28, 28, 0.725);
+    font-size : 16px;
+    padding-top : 8px;
+    margin-top : 3px;
+    margin-left : 10px;
+  }
+
+  .delete-btn{
+    cursor: pointer;
+    background-color: rgba(99, 99, 198, 0.412);
+    border-radius:40px;
+    border: none;
+    outline :none;
+  }
+
+  .complete-btn{
+    cursor: pointer;
+    background-color: rgba(87, 87, 177, 0.412);
+    padding: 3px 3px 3px 3px;
+    border: none;
+    outline :none;
+    border-radius: 20px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .delete-btn:hover, .complete-btn:hover{
+    background-color: rgba(163, 163, 205, 0.94);
+  }
+
+  

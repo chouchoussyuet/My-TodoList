@@ -1,48 +1,46 @@
 const express = require('express');
-const router = express.Router();
-
-const app = express();
-
-const cors = require('cors');
 const mysql = require('mysql');
-const {Sequelize, DataTypes } = require('sequelize'); 
+const cors = require('cors');
 const path = require('path');
+const bodyParser = require('body-parser');
 
-// tạo 1 phiên bản sequelize kết nối mysql
-const sequelize = new Sequelize('girrafe', 'chouchoussy', 'baongoc', {
-    host : 'localhost',
-    dialect : 'mysql'
-})
+const { sequelize } = require('./sequelize');
+const app = express();
+const router = require('./routes/tasksapi');
 
-// kiểm tra kết nối 
-try {
-    sequelize.authenticate();
-    console.log('Kết nối tới database thành công');
-} catch(error) {
-    console.log('Error, Lỗi kết nối tới database : ', error);
-}
-
-// import modules từ thư mục models
-const taskModel = require('./models/todo') (sequelize, Sequelize);
-
-// import router 
-// const taskRouter = require('./routes/tasksapi');
-app.use(router());
+// Sử dụng body-parser để xử lý dữ liệu từ yêu cầu POST
+app.use(bodyParser.json()); // Xử lý JSON
+app.use(bodyParser.urlencoded({ extended: true })); // Xử lý dữ liệu form-urlencoded
+app.use(router);
 app.use(cors());
+app.use( '/public', express.static( path.join(__dirname, 'public')) );   //Connect static files in 'public' directory
+app.use(express.json())    // for parsing application/json
 
-//Connect static files in 'public' directory
-app.use( '/public', express.static( path.join(__dirname, 'public')) );
 
-app.use(express.json()) // for parsing application/json
+
+//const taskModel = require('./models/todo')(sequelize, DataTypes);
+
+sequelize.sync()
+.then(() => {
+    console.log('Cơ sở dữ liệu đã được đồng bộ hóa.');
+    // Bắt đầu ứng dụng của bạn sau khi đồng bộ hóa cơ sở dữ liệu
+  })
+  .catch((error) => {
+    console.error('Lỗi khi đồng bộ hóa cơ sở dữ liệu:', error);
+  });
+
+
 
 //Connect html file
 app.get('/', (req, res) => {
 	res.sendFile('views/index.html', { root:__dirname });
 })
 
-app.listen(2508, () => {
-    console.log("ứng dụng đã chạy trên cổng 3000");
+
+
+app.listen(2501, () => {
+    console.log("ứng dụng đã chạy trên cổng ");
 });
 
 
-module.exports = router;
+

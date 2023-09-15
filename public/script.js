@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
           data.forEach(task => {
             const listItem = document.createElement('li');
+            listItem.classList.add('list');
             /*listItem.innerHTML = `
             <strong>${task.title}</strong>
             <p>${task.description || 'Không có mô tả'}</p>
@@ -28,21 +29,21 @@ document.addEventListener('DOMContentLoaded', () => {
             listItem.appendChild(titleElement);
 
             const descriptionElement = document.createElement('p');
-            descriptionElement.textContent = task.description || 'Không có mô tả';
+            descriptionElement.textContent = task.description || 'No descripttion';
             listItem.appendChild(descriptionElement);
 
             const deleteButton = document.createElement('button');
             deleteButton.setAttribute('data-id', task.id);
             deleteButton.classList.add('delete-btn');
-            deleteButton.textContent = 'Xóa';
-            listItem.appendChild(deleteButton);
+            deleteButton.innerHTML = "\uD83D\uDDD1";
+            listItem.insertBefore(deleteButton, listItem.firstChild);
 
             const completeButton = document.createElement('button');
             completeButton.setAttribute('data-id', task.id);
             completeButton.classList.add('complete-btn');
             completeButton.setAttribute('data-completed', task.completed);
-            completeButton.textContent = task.completed ? 'Đã hoàn thành' : 'Chưa hoàn thành';
-            listItem.appendChild(completeButton);
+            completeButton.textContent = task.completed ? 'Completed' : 'Incomplete';
+            listItem.insertBefore(completeButton, deleteButton);
 
             taskList.appendChild(listItem); 
 
