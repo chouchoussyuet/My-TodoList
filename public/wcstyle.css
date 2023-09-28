@@ -1,0 +1,47 @@
+@font-face {
+    font-family: 'headline';
+    src: url('font/Pacifico/Pacifico-Regular.ttf');
+  }
+  
+  @font-face {
+    font-family: 'borel';
+    src: url('font/Borel/Borel-Regular.ttf');
+  }
+  
+  body {
+      background-image: url('img/wc.png') ;
+      background-size: cover;
+    }
+  
+    #headline {
+      font-size : 70px;
+      font-weight : 400;
+      font-family : 'headline', sans-serif;
+      color : rgb(53, 51, 51);
+      text-align : center;
+      padding-top : 30px;
+      padding-bottom : 70px;
+    }
+
+    #choose {
+        font-size : 30px;
+        font-family: 'borel', sans-serif;
+        color : rgb(78, 77, 77);
+        text-align : center;
+        padding-top : 30px;
+        padding-bottom : 20px;
+    }
+
+    .choose1{
+        font-size: 25px;
+        font-family: 'borel', sans-serif;
+        color : rgb(113, 112, 112);
+        text-align : center;
+    }
+
+    .center {
+        text-align : center;
+        padding-bottom : 70px;
+    }
+  
+   
