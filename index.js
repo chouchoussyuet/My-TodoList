@@ -3,6 +3,8 @@ const mysql = require('mysql');
 const cors = require('cors');
 const path = require('path');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
+
 
 const { sequelize } = require('./sequelize');
 const app = express();
